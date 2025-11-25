@@ -22,7 +22,7 @@ var retrieveCmd = &cobra.Command{
 	Long: `Attempt to retrieve data from the passed URL using the provided
 authorization - an X-Agent-Message header.
 `,
-	Args: cobra.MinimumNArgs(1),
+	Args: cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		logging.SetLogLevel("*", "info")
 

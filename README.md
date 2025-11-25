@@ -10,6 +10,10 @@ go install github.com/storacha/debugger
 
 ## Usage
 
+### `debugger parse xagentmessage <value>`
+
+Parse a gzipped and multibase encoded `X-Agent-Message` header.
+
 ### `debugger retrieve <url> <auth>`
 
 Attempt to retrieve data from the passed URL using the provided authorization, which is expected to be an `X-Agent-Message` header.
