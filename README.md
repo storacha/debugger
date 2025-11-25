@@ -2,8 +2,16 @@
 
 Various tools and commands that can help debugging the Storacha Network.
 
+## Install
+
+```sh
+go install github.com/storacha/debugger
+```
+
 ## Usage
 
 ### `debugger retrieve <url> <auth>`
 
-Attempt to retrieve data from the passed URL using the provided authorization. It may be an encoded X-Agent-Message header or a base64 CAR encoded delegation.
+Attempt to retrieve data from the passed URL using the provided authorization, which is expected to be an `X-Agent-Message` header.
+
+Note: when providing auth as a `X-Agent-Message`, it is expected to be gzipped and multibase encoded.
