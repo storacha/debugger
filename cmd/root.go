@@ -5,7 +5,7 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
-	"github.com/storacha/debugger/cmd/parse"
+	"github.com/storacha/debugger/cmd/xagentmessage"
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -31,5 +31,5 @@ func Execute() {
 
 func init() {
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.AddCommand(parse.Cmd)
+	rootCmd.AddCommand(xagentmessage.Cmd)
 }

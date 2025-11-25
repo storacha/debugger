@@ -1,4 +1,4 @@
-package parse
+package xagentmessage
 
 import (
 	"fmt"
@@ -9,8 +9,8 @@ import (
 	"github.com/storacha/go-ucanto/transport/headercar/message"
 )
 
-var xagentmessageCmd = &cobra.Command{
-	Use:   "xagentmessage <value>",
+var parseCmd = &cobra.Command{
+	Use:   "parse <value>",
 	Short: "Parse an X-Agent-Message.",
 	Long: `Parse a multibase encoded, gzipped, X-Agent-Message header.
 `,
