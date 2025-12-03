@@ -6,6 +6,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 	"github.com/storacha/debugger/cmd/delegation"
+	"github.com/storacha/debugger/cmd/ipni"
 	"github.com/storacha/debugger/cmd/xagentmessage"
 )
 
@@ -33,5 +34,6 @@ func Execute() {
 func init() {
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.AddCommand(delegation.Cmd)
+	rootCmd.AddCommand(ipni.Cmd)
 	rootCmd.AddCommand(xagentmessage.Cmd)
 }
