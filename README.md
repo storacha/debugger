@@ -10,6 +10,34 @@ go install github.com/storacha/debugger
 
 ## Usage
 
+### `debugger delegation extract [car-file]`
+
+Extract a delegation that has been archived to a CAR. You can pipe directly to this command.
+
+e.g.
+
+```sh
+$ debugger delegation extract ucan.car
+bafyreib5ygdak2sc6fd3coryjql6u4gcmjg7co5w2rbpvb6lqkqbnzehti
+  Issuer: did:web:staging.up.storacha.network
+  Audience: did:web:staging.indexer.storacha.network
+  Capabilities:
+    Can: assert/index
+    With: did:web:staging.indexer.storacha.network
+    Nb: &{map[content:0x140003497e0 index:0x140003497c0] [{index 0x140003497c0} {content 0x140003497e0}]}
+  Proofs:
+    bafyreifb4tz7tup4b5s6kie4adqbhi2oisqx3t5d6jxlgpxnpcdykoklpu
+      Issuer: did:web:staging.indexer.storacha.network
+      Audience: did:web:staging.up.storacha.network
+      Capabilities:
+        Can: assert/equals
+        With: did:web:staging.indexer.storacha.network
+        Nb: &{map[] []}
+        Can: assert/index
+        With: did:web:staging.indexer.storacha.network
+        Nb: &{map[] []}
+```
+
 ### `debugger delegation parse <value>`
 
 Parse and print a UCAN delegation.
