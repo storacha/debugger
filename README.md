@@ -61,15 +61,18 @@ bafyreib5ygdak2sc6fd3coryjql6u4gcmjg7co5w2rbpvb6lqkqbnzehti
 
 Parse and print a UCAN delegation.
 
-### `debugger flatfs path <blob-cid>`
+### `debugger flatfs path <blob-cid-or-multihash>`
 
-Given a blob CID, convert it to a FlatFS datastore path (Piri edition).
+Given a blob CID or multibase encoded multihash, convert it to a FlatFS datastore path (Piri edition).
 
 e.g.
 
 ```console
 $ debugger flatfs path bagbaiera3f6ylgq5yqop4scfkgxibtbfzfgegm5gzrssdxv37zdkmxz2j4vq
 /6k/ciqns7mftio4ihh6jbcvdluazqs4stcdgotmyzjb32574rvgl45e6ky.data
+
+$ debugger flatfs path zQmQE3fBFV8xQKeA34gspkmoWyyvJKKJYzybPGq6zLu4pTw
+/od/ciqbybsb3rvglosb2m6pfdnweid6dp7mk4tnp6mimilduuwa4v4hodq.data
 ```
 
 ### `debugger ipni metadata parse <value>`
