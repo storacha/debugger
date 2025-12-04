@@ -36,7 +36,7 @@ Shards (14):
     Slices (253):
       zQmeoqurjukfWtjsNry2ogGNWifv66RsKRCNGar8xvf5apS @ 12583437-13632013
       zQmW6zw35SdyRhbuV44Kjwwju54drMXHup8JjRMEzDYb8q8 @ 177215992-178264568
-...
+# ...
 ```
 
 ### `debugger delegation extract [car-file]`
@@ -54,7 +54,7 @@ bafyreib5ygdak2sc6fd3coryjql6u4gcmjg7co5w2rbpvb6lqkqbnzehti
     Can: assert/index
     With: did:web:staging.indexer.storacha.network
     Nb: &{map[content:0x140003497e0 index:0x140003497c0] [{index 0x140003497c0} {content 0x140003497e0}]}
-...
+# ...
 ```
 
 ### `debugger delegation parse <value>`
