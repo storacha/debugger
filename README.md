@@ -16,7 +16,7 @@ Extract the multihash from a CID and print the multibase base58btc encoded strin
 
 e.g.
 
-```sh
+```console
 $ debugger cid b58mh bafybeihfcdsxbirwgcuyrvabs3xi5adpootdutwy4zmluarltyskmszvla
 zQmdkq1rExA72pPVr83RZNA1uRtNNimATafgTJxbf2fW54K
 ```
@@ -27,7 +27,7 @@ Extract a sharded DAG index that has been archived to a CAR. You can pipe direct
 
 e.g.
 
-```sh
+```console
 $ debugger blobindex extract index.car
 Content:
   bafybeiaqkhr2arwjc2solqwoiu2tncfrlptzmvkok72tdpdq5uiezoyhwi
@@ -45,7 +45,7 @@ Extract a delegation that has been archived to a CAR. You can pipe directly to t
 
 e.g.
 
-```sh
+```console
 $ debugger delegation extract ucan.car
 bafyreib5ygdak2sc6fd3coryjql6u4gcmjg7co5w2rbpvb6lqkqbnzehti
   Issuer: did:web:staging.up.storacha.network
@@ -67,7 +67,7 @@ Given a blob CID, convert it to a FlatFS datastore path (Piri edition).
 
 e.g.
 
-```sh
+```console
 $ debugger flatfs path bagbaiera3f6ylgq5yqop4scfkgxibtbfzfgegm5gzrssdxv37zdkmxz2j4vq
 /6k/ciqns7mftio4ihh6jbcvdluazqs4stcdgotmyzjb32574rvgl45e6ky.data
 ```
@@ -78,7 +78,7 @@ Parse a base64 encoded IPNI metadata.
 
 e.g.
 
-```sh
+```console
 $ debugger ipni metadata parse gID4AaNhY9gqWCUAAXESID3BhgVqQvFHsTo4TBfqcMJiTfE7ttRC+ofLgqAW5IeaYWUAYWnYKlgmAAGCBBIgUX8wwCPTHNNAl3QqAdrM+j5wl47D87QWT+Ps3ZlKQ4Y=
 ID: 0x3e0000 (index claim)
 Claim: bafyreib5ygdak2sc6fd3coryjql6u4gcmjg7co5w2rbpvb6lqkqbnzehti
