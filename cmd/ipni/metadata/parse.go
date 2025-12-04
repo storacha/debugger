@@ -46,22 +46,31 @@ func PrintMetadata(md ipnimd.Metadata) {
 	// in our case, the protocols are just differnt types of content claims
 	for _, code := range md.Protocols() {
 		protocol := md.Get(code)
+		protoName := "unknown"
+		switch protocol.ID() {
+		case multicodec.TransportBitswap:
+			protoName = multicodec.TransportBitswap.String()
+		case multicodec.TransportIpfsGatewayHttp:
+			protoName = multicodec.TransportIpfsGatewayHttp.String()
+		case metadata.LocationCommitmentID:
+			protoName = "location commitment"
+		case metadata.EqualsClaimID:
+			protoName = "equivalency claim"
+		case metadata.IndexClaimID:
+			protoName = "index claim"
+		}
+		fmt.Printf("ID:\t0x%s (%s)\n", strconv.FormatUint(uint64(protocol.ID()), 16), protoName)
+
 		// make sure this is some kind of claim protocol, ignore if not
 		hasClaim, ok := protocol.(metadata.HasClaim)
 		if !ok {
-			fmt.Println("UNKNOWN METADATA")
+			// might just be a protocol that we know but doesn't have a claim
+			if protoName == "unknown" {
+				fmt.Println("UNKNOWN METADATA")
+			}
 			continue
 		}
-		protoName := "unknown"
-		if protocol.ID() == metadata.LocationCommitmentID {
-			protoName = "location commitment"
-		} else if protocol.ID() == metadata.EqualsClaimID {
-			protoName = "equivalency claim"
-		} else if protocol.ID() == metadata.IndexClaimID {
-			protoName = "index claim"
-		}
-		fmt.Printf("ID: 0x%s (%s)\n", strconv.FormatUint(uint64(protocol.ID()), 16), protoName)
-		fmt.Printf("Claim: %s\n", hasClaim.GetClaim())
+		fmt.Printf("Claim:\t%s\n", hasClaim.GetClaim())
 
 		if hasClaim.GetClaim().Prefix().MhType == uint64(multicodec.Identity) {
 			dmh, err := multihash.Decode(hasClaim.GetClaim().Hash())
@@ -111,24 +120,32 @@ func PrintMetadata(md ipnimd.Metadata) {
 
 		switch typedProtocol := protocol.(type) {
 		case *metadata.EqualsClaimMetadata:
-			fmt.Printf("Equals: %s\n", typedProtocol.Equals)
-			fmt.Printf("Expiration: %s\n", time.Unix(typedProtocol.Expiration, 0).String())
+			fmt.Printf("Equals:\t%s\n", typedProtocol.Equals)
+			printExpiration(typedProtocol.Expiration)
 		case *metadata.IndexClaimMetadata:
-			fmt.Printf("Index: %s\n", typedProtocol.Index)
-			fmt.Printf("Expiration: %s\n", time.Unix(typedProtocol.Expiration, 0).String())
+			fmt.Printf("Index:\t%s\n", typedProtocol.Index)
+			printExpiration(typedProtocol.Expiration)
 		case *metadata.LocationCommitmentMetadata:
 			if typedProtocol.Shard != nil {
-				fmt.Printf("Shard: %s\n", typedProtocol.Shard)
+				fmt.Printf("Shard:\t%s\n", typedProtocol.Shard)
 			}
 			if typedProtocol.Range != nil {
 				if typedProtocol.Range.Length != nil {
-					fmt.Printf("Range: %d-%d (%d bytes)\n", typedProtocol.Range.Offset, typedProtocol.Range.Offset+*typedProtocol.Range.Length, *typedProtocol.Range.Length)
+					fmt.Printf("Range:\t%d-%d (%d bytes)\n", typedProtocol.Range.Offset, typedProtocol.Range.Offset+*typedProtocol.Range.Length, *typedProtocol.Range.Length)
 				} else {
-					fmt.Printf("Range: %d-\n", typedProtocol.Range.Offset)
+					fmt.Printf("Range:\t%d-\n", typedProtocol.Range.Offset)
 				}
 			}
-			fmt.Printf("Expiration: %s\n", time.Unix(typedProtocol.Expiration, 0).String())
+			printExpiration(typedProtocol.Expiration)
 		}
+	}
+}
+
+func printExpiration(exp int64) {
+	if exp > 0 {
+		fmt.Printf("Expiration:\t%s\n", time.Unix(exp, 0).String())
+	} else {
+		fmt.Println("Expiration:\tnone")
 	}
 }
 
