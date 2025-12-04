@@ -33,7 +33,7 @@ var extractCmd = &cobra.Command{
 
 		d, err := delegation.Extract(archive)
 		if err != nil {
-			panic(fmt.Errorf("parsing delegation: %w", err))
+			panic(fmt.Errorf("extracting delegation: %w", err))
 		}
 
 		jsonOutput, _ := cmd.Flags().GetBool("json")

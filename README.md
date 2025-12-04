@@ -10,6 +10,24 @@ go install github.com/storacha/debugger
 
 ## Usage
 
+### `debugger blobindex extract [car-file]`
+
+Extract a sharded DAG index that has been archived to a CAR. You can pipe directly to this command.
+
+e.g.
+
+```go
+$ debugger blobindex extract index.car
+Content:
+  bafybeiaqkhr2arwjc2solqwoiu2tncfrlptzmvkok72tdpdq5uiezoyhwi
+Shards (14):
+  zQmeDoFFnXb2zYYi4hFdNKz9kAwu5eHYLm7LokxQyfmjp1M
+    Slices (253):
+      zQmeoqurjukfWtjsNry2ogGNWifv66RsKRCNGar8xvf5apS @ 12583437-13632013
+      zQmW6zw35SdyRhbuV44Kjwwju54drMXHup8JjRMEzDYb8q8 @ 177215992-178264568
+...
+```
+
 ### `debugger delegation extract [car-file]`
 
 Extract a delegation that has been archived to a CAR. You can pipe directly to this command.
@@ -25,22 +43,23 @@ bafyreib5ygdak2sc6fd3coryjql6u4gcmjg7co5w2rbpvb6lqkqbnzehti
     Can: assert/index
     With: did:web:staging.indexer.storacha.network
     Nb: &{map[content:0x140003497e0 index:0x140003497c0] [{index 0x140003497c0} {content 0x140003497e0}]}
-  Proofs:
-    bafyreifb4tz7tup4b5s6kie4adqbhi2oisqx3t5d6jxlgpxnpcdykoklpu
-      Issuer: did:web:staging.indexer.storacha.network
-      Audience: did:web:staging.up.storacha.network
-      Capabilities:
-        Can: assert/equals
-        With: did:web:staging.indexer.storacha.network
-        Nb: &{map[] []}
-        Can: assert/index
-        With: did:web:staging.indexer.storacha.network
-        Nb: &{map[] []}
+...
 ```
 
 ### `debugger delegation parse <value>`
 
 Parse and print a UCAN delegation.
+
+### `debugger flatfs path <blob-cid>`
+
+Given a blob CID, convert it to a FlatFS datastore path (Piri edition).
+
+e.g.
+
+```sh
+$ debugger flatfs path bagbaiera3f6ylgq5yqop4scfkgxibtbfzfgegm5gzrssdxv37zdkmxz2j4vq
+/6k/ciqns7mftio4ihh6jbcvdluazqs4stcdgotmyzjb32574rvgl45e6ky.data
+```
 
 ### `debugger ipni metadata parse <value>`
 
