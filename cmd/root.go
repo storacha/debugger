@@ -6,6 +6,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 	"github.com/storacha/debugger/cmd/blobindex"
+	"github.com/storacha/debugger/cmd/cid"
 	"github.com/storacha/debugger/cmd/delegation"
 	"github.com/storacha/debugger/cmd/flatfs"
 	"github.com/storacha/debugger/cmd/ipni"
@@ -35,6 +36,7 @@ func Execute() {
 
 func init() {
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.AddCommand(cid.Cmd)
 	rootCmd.AddCommand(blobindex.Cmd)
 	rootCmd.AddCommand(delegation.Cmd)
 	rootCmd.AddCommand(flatfs.Cmd)

@@ -18,9 +18,7 @@ var pathCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		logging.SetLogLevel("*", "info")
 		cid, err := cid.Parse(args[0])
-		if err != nil {
-			panic(err)
-		}
+		cobra.CheckErr(err)
 		b32, _ := multibase.Encode(multibase.Base32, cid.Hash())
 		dir := flatfs.NextToLast(2).Func()(b32[1:])
 		cmd.Println(path.Join("/", dir, b32[1:]+".data"))

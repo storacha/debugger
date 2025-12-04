@@ -74,13 +74,11 @@ func PrintMetadata(md ipnimd.Metadata) {
 
 		if hasClaim.GetClaim().Prefix().MhType == uint64(multicodec.Identity) {
 			dmh, err := multihash.Decode(hasClaim.GetClaim().Hash())
-			if err != nil {
-				panic(err)
-			}
+			cobra.CheckErr(err)
+
 			dlg, err := delegation.Extract(dmh.Digest)
-			if err != nil {
-				panic(err)
-			}
+			cobra.CheckErr(err)
+
 			fmt.Printf("  Can: %s\n", dlg.Capabilities()[0].Can())
 			fmt.Printf("  With: %s\n", dlg.Capabilities()[0].With())
 			if dlg.Capabilities()[0].Can() == assert.LocationAbility {

@@ -10,13 +10,24 @@ go install github.com/storacha/debugger
 
 ## Usage
 
+### `debugger cid b58mh [cid]`
+
+Extract the multihash from a CID and print the multibase base58btc encoded string.
+
+e.g.
+
+```sh
+$ debugger cid b58mh bafybeihfcdsxbirwgcuyrvabs3xi5adpootdutwy4zmluarltyskmszvla
+zQmdkq1rExA72pPVr83RZNA1uRtNNimATafgTJxbf2fW54K
+```
+
 ### `debugger blobindex extract [car-file]`
 
 Extract a sharded DAG index that has been archived to a CAR. You can pipe directly to this command.
 
 e.g.
 
-```go
+```sh
 $ debugger blobindex extract index.car
 Content:
   bafybeiaqkhr2arwjc2solqwoiu2tncfrlptzmvkok72tdpdq5uiezoyhwi
