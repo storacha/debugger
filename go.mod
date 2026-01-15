@@ -6,6 +6,7 @@ go 1.25.3
 
 require (
 	github.com/alecthomas/chroma/v2 v2.20.0
+	github.com/efekarakus/termcolor v1.0.1
 	github.com/ipfs/go-cid v0.5.0
 	github.com/ipfs/go-log/v2 v2.8.2
 	github.com/ipld/go-ipld-prime v0.21.1-0.20240917223228-6148356a4c2e
