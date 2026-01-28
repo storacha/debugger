@@ -34,12 +34,17 @@ func FormatDagCBOR(buf []byte) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("decoding CBOR: %w", err)
 	}
+	return FormatNode(n, "")
+}
+
+// FormatNode formats an ipld-node to a dag-json encoded string.
+func FormatNode(n ipld.Node, prefix string) (string, error) {
 	jsonData, err := ipld.Encode(n, dagjson.Encode)
 	if err != nil {
 		return "", fmt.Errorf("encoding JSON: %w", err)
 	}
 	var indentedJSON bytes.Buffer
-	err = json.Indent(&indentedJSON, jsonData, "", "  ")
+	err = json.Indent(&indentedJSON, jsonData, prefix, "  ")
 	if err != nil {
 		return "", fmt.Errorf("indenting JSON: %w", err)
 	}
