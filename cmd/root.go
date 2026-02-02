@@ -8,8 +8,10 @@ import (
 	"github.com/storacha/debugger/cmd/blobindex"
 	"github.com/storacha/debugger/cmd/cid"
 	"github.com/storacha/debugger/cmd/delegation"
+	"github.com/storacha/debugger/cmd/did"
 	"github.com/storacha/debugger/cmd/flatfs"
 	"github.com/storacha/debugger/cmd/ipni"
+	"github.com/storacha/debugger/cmd/peer"
 	"github.com/storacha/debugger/cmd/xagentmessage"
 )
 
@@ -36,10 +38,12 @@ func Execute() {
 
 func init() {
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.AddCommand(cid.Cmd)
 	rootCmd.AddCommand(blobindex.Cmd)
+	rootCmd.AddCommand(cid.Cmd)
 	rootCmd.AddCommand(delegation.Cmd)
+	rootCmd.AddCommand(did.Cmd)
 	rootCmd.AddCommand(flatfs.Cmd)
 	rootCmd.AddCommand(ipni.Cmd)
+	rootCmd.AddCommand(peer.Cmd)
 	rootCmd.AddCommand(xagentmessage.Cmd)
 }
