@@ -10,17 +10,6 @@ go install github.com/storacha/debugger
 
 ## Usage
 
-### `debugger cid b58mh [cid]`
-
-Extract the multihash from a CID and print the multibase base58btc encoded string.
-
-e.g.
-
-```console
-$ debugger cid b58mh bafybeihfcdsxbirwgcuyrvabs3xi5adpootdutwy4zmluarltyskmszvla
-zQmdkq1rExA72pPVr83RZNA1uRtNNimATafgTJxbf2fW54K
-```
-
 ### `debugger blobindex extract [car-file]`
 
 Extract a sharded DAG index that has been archived to a CAR. You can pipe directly to this command.
@@ -37,6 +26,61 @@ Shards (14):
       zQmeoqurjukfWtjsNry2ogGNWifv66RsKRCNGar8xvf5apS @ 12583437-13632013
       zQmW6zw35SdyRhbuV44Kjwwju54drMXHup8JjRMEzDYb8q8 @ 177215992-178264568
 ...
+```
+
+### `debugger cid b58mh [cid]`
+
+Extract the multihash from a CID and print the multibase base58btc encoded string.
+
+e.g.
+
+```console
+$ debugger cid b58mh bafybeihfcdsxbirwgcuyrvabs3xi5adpootdutwy4zmluarltyskmszvla
+zQmdkq1rExA72pPVr83RZNA1uRtNNimATafgTJxbf2fW54K
+```
+
+### `debugger cid decode <file>`
+
+Decode a byte encoded CID and print information to the console.
+
+e.g.
+
+```console
+$ debugger cid decode ./cid.bin
+CID:        baguqeera3nw74wxxypvzcrf7jlieskytzaohhd4zyana2ndnk4ubjl2p5rvq (base32)
+Version:    1
+IPLD Codec: 0x129 (dag-json)
+Digest:     zQmd7DGrjv8juYkDPsc4HHfCH6QUaMuQr32aHb4AuJWBZQv (base58btc)
+Code:       0x12 (sha2-256)
+Length:     32
+```
+
+### `debugger cid parse <cid>`
+
+Parse a CID and print information to the console.
+
+```console
+$ debugger cid parse baguqeera3nw74wxxypvzcrf7jlieskytzaohhd4zyana2ndnk4ubjl2p5rvq
+CID:        baguqeera3nw74wxxypvzcrf7jlieskytzaohhd4zyana2ndnk4ubjl2p5rvq (base32)
+Version:    1
+IPLD Codec: 0x129 (dag-json)
+Digest:     zQmd7DGrjv8juYkDPsc4HHfCH6QUaMuQr32aHb4AuJWBZQv (base58btc)
+Code:       0x12 (sha2-256)
+Length:     32
+```
+
+### `debugger dagcbor decode <file>`
+
+Decode `dag-cbor` encoded data, format it as `dag-json` and print to the console.
+
+### `debugger did parse <did>`
+
+Parse a DID and print information to the console.
+
+```console
+$ debugger did parse did:key:z6MksdurUPk5bnKg34ZhRoCH6yrRdQzCTpSy8EvnheVJT7bE
+DID:    did:key:z6MksdurUPk5bnKg34ZhRoCH6yrRdQzCTpSy8EvnheVJT7bE
+PeerID: 12D3KooWP11ydH5MT96hLTERNpyn2gPGJAkz5dH6PpNtFMgBRqXn
 ```
 
 ### `debugger delegation extract [car-file]`
@@ -87,6 +131,24 @@ ID: 0x3e0000 (index claim)
 Claim: bafyreib5ygdak2sc6fd3coryjql6u4gcmjg7co5w2rbpvb6lqkqbnzehti
 Index: bagbaierakf7tbqbd2mongqexoqvadwwm7i7hbf4oypz3ifsp4pwn3gkkioda
 Expiration: 1970-01-01 01:00:00 +0100 BST
+```
+
+### `debugger message extract [car-file]`
+
+Extract a Ucanto agent message CAR and print information.
+
+### `debugger message parse <value>`
+
+Parse a multibase encoded Ucanto agent message CAR and print information.
+
+### `debugger peer parse <libp2p-peer-id>`
+
+Parse a libp2p peer ID and print information to the console.
+
+```console
+$ debugger peer parse 12D3KooWP11ydH5MT96hLTERNpyn2gPGJAkz5dH6PpNtFMgBRqXn
+PeerID: 12D3KooWP11ydH5MT96hLTERNpyn2gPGJAkz5dH6PpNtFMgBRqXn
+DID:    did:key:z6MksdurUPk5bnKg34ZhRoCH6yrRdQzCTpSy8EvnheVJT7bE
 ```
 
 ### `debugger retrieve <url> <auth>`

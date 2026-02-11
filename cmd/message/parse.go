@@ -17,7 +17,7 @@ import (
 var parseCmd = &cobra.Command{
 	Use:   "parse <value>",
 	Short: "Parse a message.",
-	Long:  `Parse a multibase encoded CID, with an identity multihash that contains message data in a CAR file.`,
+	Long:  `Parse multibase encoded agent message data in a CAR file.`,
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		logging.SetLogLevel("*", "info")
