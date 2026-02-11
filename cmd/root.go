@@ -7,10 +7,13 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/storacha/debugger/cmd/blobindex"
 	"github.com/storacha/debugger/cmd/cid"
+	"github.com/storacha/debugger/cmd/dagcbor"
 	"github.com/storacha/debugger/cmd/delegation"
+	"github.com/storacha/debugger/cmd/did"
 	"github.com/storacha/debugger/cmd/flatfs"
 	"github.com/storacha/debugger/cmd/ipni"
 	"github.com/storacha/debugger/cmd/message"
+	"github.com/storacha/debugger/cmd/peer"
 	"github.com/storacha/debugger/cmd/xagentmessage"
 )
 
@@ -37,11 +40,14 @@ func Execute() {
 
 func init() {
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.AddCommand(cid.Cmd)
 	rootCmd.AddCommand(blobindex.Cmd)
+	rootCmd.AddCommand(cid.Cmd)
+	rootCmd.AddCommand(dagcbor.Cmd)
 	rootCmd.AddCommand(delegation.Cmd)
+	rootCmd.AddCommand(did.Cmd)
 	rootCmd.AddCommand(flatfs.Cmd)
 	rootCmd.AddCommand(ipni.Cmd)
 	rootCmd.AddCommand(message.Cmd)
+	rootCmd.AddCommand(peer.Cmd)
 	rootCmd.AddCommand(xagentmessage.Cmd)
 }
