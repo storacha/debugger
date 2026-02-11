@@ -7,7 +7,7 @@ import (
 )
 
 var parseCmd = &cobra.Command{
-	Use:   "parse <path>",
+	Use:   "parse <cid>",
 	Short: "Print a string encoded CID.",
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {

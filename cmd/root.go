@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/storacha/debugger/cmd/blobindex"
 	"github.com/storacha/debugger/cmd/cid"
+	"github.com/storacha/debugger/cmd/dagcbor"
 	"github.com/storacha/debugger/cmd/delegation"
 	"github.com/storacha/debugger/cmd/did"
 	"github.com/storacha/debugger/cmd/flatfs"
@@ -40,6 +41,7 @@ func init() {
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.AddCommand(blobindex.Cmd)
 	rootCmd.AddCommand(cid.Cmd)
+	rootCmd.AddCommand(dagcbor.Cmd)
 	rootCmd.AddCommand(delegation.Cmd)
 	rootCmd.AddCommand(did.Cmd)
 	rootCmd.AddCommand(flatfs.Cmd)
