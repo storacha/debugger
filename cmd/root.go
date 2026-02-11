@@ -12,6 +12,7 @@ import (
 	"github.com/storacha/debugger/cmd/did"
 	"github.com/storacha/debugger/cmd/flatfs"
 	"github.com/storacha/debugger/cmd/ipni"
+	"github.com/storacha/debugger/cmd/message"
 	"github.com/storacha/debugger/cmd/peer"
 	"github.com/storacha/debugger/cmd/xagentmessage"
 )
@@ -46,6 +47,7 @@ func init() {
 	rootCmd.AddCommand(did.Cmd)
 	rootCmd.AddCommand(flatfs.Cmd)
 	rootCmd.AddCommand(ipni.Cmd)
+	rootCmd.AddCommand(message.Cmd)
 	rootCmd.AddCommand(peer.Cmd)
 	rootCmd.AddCommand(xagentmessage.Cmd)
 }
